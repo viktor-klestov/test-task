@@ -34,6 +34,10 @@ object Movement extends Enum[Movement] {
 
 }
 
-case class TurbineEvent(turbineId: String, status: TurbineStatus, generation: Double, timestamp: Instant)
+trait Event {
+  def timestamp: Instant
+}
 
-case class MovementEvent(engineerId: String, location: Location, movement: Movement, timestamp: Instant)
+case class TurbineEvent(turbineId: String, status: TurbineStatus, generation: Double, timestamp: Instant) extends Event
+
+case class MovementEvent(engineerId: String, location: Location, movement: Movement, timestamp: Instant) extends Event

@@ -12,7 +12,7 @@ import scala.io.Source
 
 object Simulator extends ZIOAppDefault {
   val simulateSince: Instant = LocalDate.parse("2015-11-23").atStartOfDay(ZoneOffset.UTC).toInstant;
-  val speedupFactor = 120 // 1 real second = 1 minute from log files, can not be less than 1
+  val speedupFactor = 1 // 1 real second = 1 minute from log files, can not be less than 1
 
   override def run: ZIO[ZIOAppArgs with Scope, Any, Any] = {
     val movementEvents = MovementEventStream.fromSource(Source.fromURL(getClass.getResource("/movements.csv")))
